@@ -207,30 +207,6 @@
       box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
     }
 
-    .mobile-only-cta {
-      display: none;
-    }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-      flex-direction: column;
-      gap: 5px;
-      z-index: 1100;
-    }
-
-    .hamburger-line {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background-color: var(--text);
-      transition: all 0.3s ease;
-      border-radius: 2px;
-    }
-
     /* HERO */
     .hero {
       min-height: 92vh;
@@ -1190,76 +1166,18 @@
 
     /* Tablet and General Responsive Breakpoint (< 960px) */
     @media(max-width: 960px) {
-      /* Mobile Nav Toggle & Drawer Style */
-      .nav-toggle {
-        display: flex;
-      }
-
+      /* Mobile Nav Style (No hamburger drawer, show CTA directly on bar) */
       .nav-links {
         display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 72px;
-        left: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(25px);
-        -webkit-backdrop-filter: blur(25px);
-        border: 1px solid var(--border);
-        border-radius: var(--r);
-        padding: 2.2rem 1.5rem;
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-        gap: 1.5rem;
-        text-align: center;
-        z-index: 999;
-        transform: translateY(-10px);
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .nav-links.nav-open-links {
-        display: flex;
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
+      .nav-separator {
+        display: none;
       }
 
-      nav.nav-open {
-        background: #ffffff;
-        border-color: var(--indigo);
-      }
-
-      /* Animated Hamburger to X */
-      nav.nav-open .hamburger-line:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-        background-color: var(--indigo);
-      }
-
-      nav.nav-open .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-
-      nav.nav-open .hamburger-line:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-        background-color: var(--indigo);
-      }
-
-      .nav-cta-group {
-        display: none; /* Hide on bar, shown inside links menu via .mobile-only-cta */
-      }
-
-      .mobile-only-cta {
-        display: block;
-        width: 100%;
-        margin-top: 0.5rem;
-      }
-
-      .mobile-only-cta .nav-cta {
-        justify-content: center;
-        width: 100%;
-        padding: 0.8rem;
-        font-size: 0.85rem;
+      .nav-cta {
+        padding: 0.45rem 0.8rem;
+        font-size: 0.75rem;
       }
 
       /* Grid elements adjustments */
@@ -1419,18 +1337,12 @@
           <span class="nav-brand-bot">An MCCIA Initiative</span>
         </div>
       </a>
-      <button class="nav-toggle" aria-label="Toggle Navigation">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
       <ul class="nav-links">
         <li><a href="#story">Foreword</a></li>
         <li><a href="#methodology">AI Series</a></li>
         <li><a href="#metrics">Key Metrics</a></li>
         <li><a href="#champions">100 Champions</a></li>
         <li><a href="#takeaways">Takeaways</a></li>
-        <li class="mobile-only-cta"><a href="https://linktr.ee/MCCIA_AI_Experience" target="_blank" rel="noopener" class="nav-cta"><i data-lucide="calendar" style="width: 14px; height: 14px;"></i>Book Consulting</a></li>
       </ul>
       <div class="nav-cta-group">
         <span class="nav-separator">|</span>
@@ -1897,27 +1809,6 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
-      // Mobile Navigation Menu Toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const nav = document.querySelector('nav');
-
-      if (navToggle && navLinks && nav) {
-        navToggle.addEventListener('click', () => {
-          nav.classList.toggle('nav-open');
-          navLinks.classList.toggle('nav-open-links');
-        });
-
-        // Close mobile drawer when a link is clicked
-        const navAnchorLinks = navLinks.querySelectorAll('a');
-        navAnchorLinks.forEach(link => {
-          link.addEventListener('click', () => {
-            nav.classList.remove('nav-open');
-            navLinks.classList.remove('nav-open-links');
-          });
-        });
-      }
-
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
       }
