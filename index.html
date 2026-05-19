@@ -669,10 +669,30 @@
       gap: 2rem;
     }
 
-    .meth-grid {
+    .studio-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr 1fr;
       gap: 2rem;
+    }
+
+    .studio-card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 2.2rem;
+      box-shadow: var(--glow-shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .studio-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      background: var(--card-hover);
+      box-shadow: 0 20px 40px rgba(0, 63, 138, 0.04);
     }
 
     .mc {
@@ -1205,6 +1225,11 @@
         grid-template-columns: 1fr;
         gap: 2.5rem;
       }
+
+      .studio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
     }
 
     /* Small Tablet and Phone Breakpoint (< 768px) */
@@ -1499,6 +1524,75 @@
           <p>Expert-led, informal discussion labs tracking emerging trends. Features industry veterans like <strong>Dr.
               Navin Kabra</strong> and Google AI Consultant <strong>Dr. Bhushan Garware</strong>.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDIO IMPACT SECTION (Consultations & Workshops) -->
+  <section id="studio-impact" style="background: #ffffff; border-bottom: 1px solid var(--border)">
+    <div class="wrap">
+      <div class="shdr">
+        <div class="stag"><i data-lucide="activity"></i>On-Ground Impact</div>
+        <h2 class="sh">Studio Consultations & Technical Workshops</h2>
+        <p class="slead">Direct enablement numbers and operational success stories driven by the MCCIA Applied AI Studio team on-site:</p>
+      </div>
+
+      <div class="studio-grid">
+        
+        <!-- Consultation Data Card -->
+        <div class="studio-card" style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0, 86, 179, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+          <div class="mc-ico b" style="background: rgba(0, 63, 138, 0.06); color: var(--indigo); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+            <i data-lucide="help-circle" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">Consultation Data</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+            <div style="display: flex; align-items: center; gap: 1.25rem;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;"><span class="roll-num" data-target="600">1</span>+</div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique Companies Benefitted</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Custom operational assessments and tech deployment paths tailored to individual workflows.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;"><span class="roll-num" data-target="100">1</span>+</div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Building Custom AI Apps</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Active MSMEs co-developing custom applications to solve their unique business constraints.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workshop Data Card -->
+        <div class="studio-card" style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+          <div class="mc-ico g" style="background: rgba(16, 185, 129, 0.06); color: var(--emerald); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+            <i data-lucide="users" style="width: 20px; height: 20px;"></i>
+          </div>
+          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">Workshop Data</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 1.8rem;">
+            <div style="display: flex; align-items: center; gap: 1.25rem;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;"><span class="roll-num" data-target="200">1</span>+</div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique Companies Attended / Benefitted</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Collaborative district-level workshops and training sessions focused on technical scaling.</p>
+              </div>
+            </div>
+            
+            <div style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;"><span class="roll-num" data-target="80">1</span>%</div>
+              <div>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Workflow Efficiency Gains</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Average efficiency improvement reported by participants using AI tools in their daily tasks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
