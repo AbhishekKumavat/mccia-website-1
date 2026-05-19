@@ -207,6 +207,30 @@
       box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
     }
 
+    .mobile-only-cta {
+      display: none;
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+      flex-direction: column;
+      gap: 5px;
+      z-index: 1100;
+    }
+
+    .hamburger-line {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background-color: var(--text);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
     /* HERO */
     .hero {
       min-height: 92vh;
@@ -276,7 +300,7 @@
 
     .hero-h1 {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-size: clamp(2rem, 5vw, 4.2rem);
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -.03em;
@@ -1145,99 +1169,239 @@
       color: #ffffff;
     }
 
-    /* RESPONSIVE */
-    @media(max-width:960px) {
-      .metrics-split {
-        grid-template-columns: 1fr;
-        gap: 2.5rem
-      }
+    /* RESPONSIVE DESIGN SYSTEM */
 
-      .story-grid {
-        grid-template-columns: 1fr
+    /* Global responsive section spacing */
+    section {
+      padding: 4.5rem 1.25rem;
+    }
+    .shdr {
+      margin-bottom: 2.5rem;
+    }
+    
+    @media(min-width: 769px) {
+      section {
+        padding: 6.5rem 1.5rem;
       }
-
-      .meth-grid {
-        grid-template-columns: 1fr
-      }
-
-      .ch-grid {
-        grid-template-columns: 1fr 1fr
-      }
-
-      .takeaway-grid {
-        grid-template-columns: 1fr
+      .shdr {
+        margin-bottom: 3.5rem;
       }
     }
 
-    @media(max-width:768px) {
-      .ch-grid {
-        grid-template-columns: 1fr
-      }
-    }
-
-    @media(max-width:640px) {
-      .nav-in {
-        padding: 0 0.85rem
-      }
-
-      .nav-logo {
-        gap: 6px
-      }
-
-      .nav-brand-bot {
-        display: none
-      }
-
-      .nav-brand-top {
-        font-size: 0.72rem
+    /* Tablet and General Responsive Breakpoint (< 960px) */
+    @media(max-width: 960px) {
+      /* Mobile Nav Toggle & Drawer Style */
+      .nav-toggle {
+        display: flex;
       }
 
       .nav-links {
-        display: none
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 2.2rem 1.5rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        gap: 1.5rem;
+        text-align: center;
+        z-index: 999;
+        transform: translateY(-10px);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .nav-cta {
-        padding: .35rem .65rem;
-        font-size: .72rem;
-        white-space: nowrap;
-        gap: 4px
+      .nav-links.nav-open-links {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
       }
 
-      .nav-cta i {
-        width: 12px;
-        height: 12px
+      nav.nav-open {
+        background: #ffffff;
+        border-color: var(--indigo);
+      }
+
+      /* Animated Hamburger to X */
+      nav.nav-open .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        background-color: var(--indigo);
+      }
+
+      nav.nav-open .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+
+      nav.nav-open .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        background-color: var(--indigo);
+      }
+
+      .nav-cta-group {
+        display: none; /* Hide on bar, shown inside links menu via .mobile-only-cta */
+      }
+
+      .mobile-only-cta {
+        display: block;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+
+      .mobile-only-cta .nav-cta {
+        justify-content: center;
+        width: 100%;
+        padding: 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      /* Grid elements adjustments */
+      .metrics-split {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .meth-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .ch-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .takeaway-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* Small Tablet and Phone Breakpoint (< 768px) */
+    @media(max-width: 768px) {
+      .ch-grid {
+        grid-template-columns: 1fr;
       }
 
       .strip-in {
-        grid-template-columns: 1fr 1fr
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
       }
 
       .si {
-        border-right: none
+        padding: 1.8rem 1.25rem;
+        /* Keep full borders for modern independent card capsules */
+        border: 1px solid var(--border) !important;
+        border-radius: var(--r) !important;
+      }
+    }
+
+    /* Mobile Breakpoint (< 640px) */
+    @media(max-width: 640px) {
+      .nav-in {
+        padding: 0 1rem;
       }
 
-      .si:nth-child(odd) {
-        border-right: 1px solid var(--border)
+      .nav-logo {
+        gap: 8px;
       }
 
-      .si:nth-child(1),
-      .si:nth-child(2) {
-        border-bottom: 1px solid var(--border)
+      .nav-brand-bot {
+        display: none;
       }
 
-      .per-row {
-        grid-template-columns: 1fr
+      .nav-brand-top {
+        font-size: 0.8rem;
+      }
+
+      /* Hero panel grid stacked */
+      .hero-panel {
+        padding: 1.5rem 1.25rem;
+        border-radius: var(--r);
+      }
+
+      .hp-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      .hp-grid .hcs:not(:last-child) {
+        border-bottom: 1px solid var(--border);
+        padding-bottom: 1.25rem;
+      }
+
+      /* Reduce Card paddings to fit screen width beautifully */
+      .ch-card, .per-card {
+        padding: 1.5rem;
+      }
+
+      .centered-quote {
+        padding: 2.2rem 1.5rem;
+      }
+
+      .centered-quote h3 {
+        font-size: 1rem !important;
+      }
+
+      .cta-banner {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .cta-banner h2 {
+        font-size: 1.7rem;
       }
 
       .ft-wrap {
         flex-direction: column;
-        text-align: center
+        text-align: center;
+        gap: 1.25rem;
+      }
+
+      .ft-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem 1.5rem;
       }
     }
 
-    @media(max-width:420px) {
+    /* Narrow Phone Breakpoint (< 580px) */
+    @media(max-width: 580px) {
+      /* Stack Metrics description vertically so numbers don't get clipped */
+      .met-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1.5rem;
+      }
+
+      .met-num {
+        min-width: auto;
+        font-size: 2.4rem;
+      }
+    }
+
+    /* Ultra Narrow Phone Breakpoint (< 480px) */
+    @media(max-width: 480px) {
+      /* Stack stats strip vertically */
+      .strip-in {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+
       .nav-logo div {
-        display: none
+        display: none;
       }
     }
   </style>
@@ -1255,12 +1419,18 @@
           <span class="nav-brand-bot">An MCCIA Initiative</span>
         </div>
       </a>
+      <button class="nav-toggle" aria-label="Toggle Navigation">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
       <ul class="nav-links">
         <li><a href="#story">Foreword</a></li>
         <li><a href="#methodology">AI Series</a></li>
         <li><a href="#metrics">Key Metrics</a></li>
         <li><a href="#champions">100 Champions</a></li>
         <li><a href="#takeaways">Takeaways</a></li>
+        <li class="mobile-only-cta"><a href="https://linktr.ee/MCCIA_AI_Experience" target="_blank" rel="noopener" class="nav-cta"><i data-lucide="calendar" style="width: 14px; height: 14px;"></i>Book Consulting</a></li>
       </ul>
       <div class="nav-cta-group">
         <span class="nav-separator">|</span>
@@ -1727,6 +1897,27 @@
 
   <script>
     window.addEventListener('DOMContentLoaded', () => {
+      // Mobile Navigation Menu Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      const nav = document.querySelector('nav');
+
+      if (navToggle && navLinks && nav) {
+        navToggle.addEventListener('click', () => {
+          nav.classList.toggle('nav-open');
+          navLinks.classList.toggle('nav-open-links');
+        });
+
+        // Close mobile drawer when a link is clicked
+        const navAnchorLinks = navLinks.querySelectorAll('a');
+        navAnchorLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            nav.classList.remove('nav-open');
+            navLinks.classList.remove('nav-open-links');
+          });
+        });
+      }
+
       if (typeof lucide !== 'undefined') {
         lucide.createIcons();
       }
