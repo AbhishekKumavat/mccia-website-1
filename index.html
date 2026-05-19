@@ -525,10 +525,33 @@
     }
 
     .tl {
+      position: relative;
       margin-top: 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1rem;
+      gap: 1.5rem;
+    }
+
+    .tl-track {
+      position: absolute;
+      left: 8px;
+      top: 24px;
+      bottom: 24px;
+      width: 2px;
+      background: rgba(0, 63, 138, 0.1);
+      border-radius: 1px;
+      z-index: 1;
+    }
+
+    .tl-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom, var(--indigo), var(--emerald));
+      border-radius: 1px;
+      transition: height 0.1s ease-out;
     }
 
     .tl-item {
@@ -536,39 +559,36 @@
       gap: 1.5rem;
       position: relative;
       padding-bottom: 1.5rem;
-    }
-
-    .tl-item::after {
-      content: '';
-      position: absolute;
-      left: 8px;
-      top: 24px;
-      bottom: 0;
-      width: 2px;
-      background: linear-gradient(to bottom, var(--indigo), var(--mint));
-      opacity: 0.25;
-    }
-
-    .tl-item:last-child::after {
-      display: none;
+      z-index: 2;
     }
 
     .tl-dot {
       width: 18px;
       height: 18px;
       border-radius: 50%;
-      background: var(--indigo);
-      border: 4px solid var(--bg);
-      box-shadow: 0 0 0 1px rgba(0, 63, 138, 0.2), 0 0 10px rgba(0, 63, 138, 0.15);
+      background: #ffffff;
+      border: 2px solid var(--border);
       flex-shrink: 0;
       margin-top: 14px;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 2;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 3;
+      position: relative;
+    }
+
+    /* Active States */
+    .tl-item.active .tl-dot {
+      background: var(--indigo);
+      border: 4px solid var(--bg);
+      box-shadow: 0 0 0 1px rgba(0, 63, 138, 0.25), 0 0 12px rgba(0, 63, 138, 0.3);
+    }
+
+    .tl-item.active#tl-item-2 .tl-dot {
+      background: var(--emerald);
+      box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.25), 0 0 12px rgba(16, 185, 129, 0.3);
     }
 
     .tl-item:hover .tl-dot {
-      transform: scale(1.2);
-      box-shadow: 0 0 0 4px rgba(0, 63, 138, 0.1), 0 0 15px rgba(0, 63, 138, 0.25);
+      transform: scale(1.25);
     }
 
     .tl-c {
@@ -1078,13 +1098,13 @@
 
     /* MINIMAL CTA & FUTURE STUDIO */
     .cta-banner {
-      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-      color: var(--text);
+      background: linear-gradient(135deg, var(--indigo) 0%, var(--violet) 100%);
+      color: #ffffff;
       border-radius: var(--r-lg);
-      padding: 4rem 3rem;
+      padding: 5rem 3rem;
       text-align: center;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.02);
-      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px rgba(0, 63, 138, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       position: relative;
       overflow: hidden;
     }
@@ -1096,25 +1116,42 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(0, 63, 138, 0.03) 0%, transparent 60%);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 65%);
       pointer-events: none;
     }
 
     .cta-banner h2 {
       font-family: 'Bricolage Grotesque', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 700;
+      color: #ffffff;
       margin-bottom: 1.25rem;
+      position: relative;
+      z-index: 2;
     }
 
     .cta-banner p {
-      font-size: 1rem;
-      color: var(--text-muted);
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.88);
       line-height: 1.7;
       margin-bottom: 2.2rem;
-      max-width: 560px;
+      max-width: 580px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-banner .btn {
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      transition: all 0.25s ease;
+    }
+
+    .cta-banner .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
     }
 
     /* FOOTER */
@@ -1145,7 +1182,7 @@
 
     .ft-brand p {
       font-size: .82rem;
-      color: #94a3b8;
+      color: rgba(255, 255, 255, 0.9);
     }
 
     .ft-links {
@@ -1156,13 +1193,13 @@
 
     .ft-links a {
       font-size: .82rem;
-      color: #94a3b8;
+      color: rgba(255, 255, 255, 0.9);
       text-decoration: none;
       transition: color .2s;
     }
 
     .ft-links a:hover {
-      color: #ffffff;
+      color: var(--emerald);
     }
 
     /* RESPONSIVE DESIGN SYSTEM */
@@ -1171,14 +1208,16 @@
     section {
       padding: 4.5rem 1.25rem;
     }
+
     .shdr {
       margin-bottom: 2.5rem;
     }
-    
+
     @media(min-width: 769px) {
       section {
         padding: 6.5rem 1.5rem;
       }
+
       .shdr {
         margin-bottom: 3.5rem;
       }
@@ -1186,6 +1225,7 @@
 
     /* Tablet and General Responsive Breakpoint (< 960px) */
     @media(max-width: 960px) {
+
       /* Mobile Nav Style (No hamburger drawer, show CTA directly on bar) */
       .nav-links {
         display: none;
@@ -1286,7 +1326,8 @@
       }
 
       /* Reduce Card paddings to fit screen width beautifully */
-      .ch-card, .per-card {
+      .ch-card,
+      .per-card {
         padding: 1.5rem;
       }
 
@@ -1321,6 +1362,7 @@
 
     /* Narrow Phone Breakpoint (< 580px) */
     @media(max-width: 580px) {
+
       /* Stack Metrics description vertically so numbers don't get clipped */
       .met-card {
         flex-direction: column;
@@ -1337,6 +1379,7 @@
 
     /* Ultra Narrow Phone Breakpoint (< 480px) */
     @media(max-width: 480px) {
+
       /* Stack stats strip vertically */
       .strip-in {
         grid-template-columns: 1fr;
@@ -1388,8 +1431,7 @@
       <h1 class="hero-h1">
         Empowering MSMEs with <span class="cb">Artificial</span> <span class="cg">Intelligence</span>
       </h1>
-      <p class="hero-sub">A landmark report detailing the real-world methodologies, reach data, and verified success
-        stories of 100 MSME Champions adopting practical AI tools across Maharashtra.</p>
+      <p class="hero-sub">Pioneering the adoption of practical artificial intelligence across MSMEs by transforming awareness into implementation and experimentation into execution.</p>
       <div class="hero-btns">
         <a href="#champions" class="btn btn-blue"><i data-lucide="users"></i>View MSME Champions</a>
         <a href="#story" class="btn btn-ghost">Learn Our Story</a>
@@ -1398,7 +1440,7 @@
       <div class="hero-panel">
         <div class="hp-grid">
           <div class="hcs">
-            <div class="hcs-n">1,005</div>
+            <div class="hcs-n">1,700+</div>
             <div class="hcs-l">MSMEs Trained</div>
           </div>
           <div class="hcs">
@@ -1418,19 +1460,19 @@
   <div class="strip">
     <div class="strip-in">
       <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="1005">1</span></div>
+        <div class="si-n"><span class="roll-num" data-target="1700">1</span>+</div>
         <div class="si-l">MSMEs Sensitized</div>
       </div>
       <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="1115">1</span></div>
+        <div class="si-n"><span class="roll-num" data-target="1115">1</span>+</div>
         <div class="si-l">Total Participants</div>
       </div>
       <div class="si">
-        <div class="si-n gr"><span class="roll-num" data-target="12">1</span></div>
+        <div class="si-n gr"><span class="roll-num" data-target="12">1</span>+</div>
         <div class="si-l">Districts Covered</div>
       </div>
       <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="100">1</span></div>
+        <div class="si-n"><span class="roll-num" data-target="100">1</span>+</div>
         <div class="si-l">AI Champions Analyzed</div>
       </div>
     </div>
@@ -1457,15 +1499,19 @@
         <!-- Right side: Timeline -->
         <div style="margin-top: 1.5rem;">
           <div class="tl">
-            <div class="tl-item">
+            <div class="tl-track">
+              <div class="tl-progress"></div>
+            </div>
+
+            <div class="tl-item" id="tl-item-1">
               <div class="tl-dot"></div>
               <div class="tl-c">
                 <h4>2024 — MCCIA AI Series Launched</h4>
                 <p>Statewide Boot Camps and virtual webinars reaching 1,115 active participants across Maharashtra.</p>
               </div>
             </div>
-            <div class="tl-item">
-              <div class="tl-dot" style="background:var(--green)"></div>
+            <div class="tl-item" id="tl-item-2">
+              <div class="tl-dot"></div>
               <div class="tl-c">
                 <h4>June 2025 — Dedicated Applied AI Studio</h4>
                 <p>Transitioned from general awareness programs to direct, hands-on implementation and technical
@@ -1534,60 +1580,91 @@
       <div class="shdr">
         <div class="stag"><i data-lucide="activity"></i>On-Ground Impact</div>
         <h2 class="sh">Studio Consultations & Technical Workshops</h2>
-        <p class="slead">Direct enablement numbers and operational success stories driven by the MCCIA Applied AI Studio team on-site:</p>
+        <p class="slead">Direct enablement numbers and operational success stories driven by the MCCIA Applied AI Studio
+          team on-site:</p>
       </div>
 
       <div class="studio-grid">
-        
+
         <!-- Consultation Data Card -->
-        <div class="studio-card" style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0, 86, 179, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
-          <div class="mc-ico b" style="background: rgba(0, 63, 138, 0.06); color: var(--indigo); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+        <div class="studio-card"
+          style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div
+            style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0, 86, 179, 0.05) 0%, transparent 70%); pointer-events: none;">
+          </div>
+          <div class="mc-ico b"
+            style="background: rgba(0, 63, 138, 0.06); color: var(--indigo); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
             <i data-lucide="help-circle" style="width: 20px; height: 20px;"></i>
           </div>
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">Consultation Data</h3>
-          
+          <h3
+            style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">
+            1-on-1 Consultations</h3>
+
           <div style="display: flex; flex-direction: column; gap: 1.8rem;">
             <div style="display: flex; align-items: center; gap: 1.25rem;">
-              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">600+</div>
+              <div
+                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">
+                600+</div>
               <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique Companies Benefitted</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Custom operational assessments and tech deployment paths tailored to individual workflows.</p>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique
+                  Companies Benefitted</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Custom operational
+                  assessments and tech deployment paths tailored to individual workflows.</p>
               </div>
             </div>
-            
-            <div style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
-              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">100+</div>
+
+            <div
+              style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+              <div
+                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">
+                100+</div>
               <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Building Custom AI Apps</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Active MSMEs co-developing custom applications to solve their unique business constraints.</p>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Building
+                  Custom AI Apps</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Active MSMEs co-developing
+                  custom applications to solve their unique business constraints.</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Workshop Data Card -->
-        <div class="studio-card" style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
-          <div style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
-          <div class="mc-ico g" style="background: rgba(16, 185, 129, 0.06); color: var(--emerald); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+        <div class="studio-card"
+          style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
+          <div
+            style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%); pointer-events: none;">
+          </div>
+          <div class="mc-ico g"
+            style="background: rgba(16, 185, 129, 0.06); color: var(--emerald); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
             <i data-lucide="users" style="width: 20px; height: 20px;"></i>
           </div>
-          <h3 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">Workshop Data</h3>
-          
+          <h3
+            style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">
+            Technical Workshops</h3>
+
           <div style="display: flex; flex-direction: column; gap: 1.8rem;">
             <div style="display: flex; align-items: center; gap: 1.25rem;">
-              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">200+</div>
+              <div
+                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">
+                200+</div>
               <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique Companies Attended / Benefitted</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Collaborative district-level workshops and training sessions focused on technical scaling.</p>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique
+                  Companies Attended / Benefitted</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Collaborative district-level
+                  workshops and training sessions focused on technical scaling.</p>
               </div>
             </div>
-            
-            <div style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
-              <div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">80%</div>
+
+            <div
+              style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
+              <div
+                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">
+                80%</div>
               <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Workflow Efficiency Gains</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Average efficiency improvement reported by participants using AI tools in their daily tasks.</p>
+                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Workflow
+                  Efficiency Gains</h4>
+                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Average efficiency
+                  improvement reported by participants using AI tools in their daily tasks.</p>
               </div>
             </div>
           </div>
@@ -1866,8 +1943,9 @@
         <h2>Transform Your Business Workflow</h2>
         <p>Connect with the MCCIA Applied AI Studio to explore technical workshops, workflow audits, and customized
           digital upskilling programs for your organization.</p>
-        <a href="https://mcciapune.com" target="_blank" rel="noopener" class="btn btn-blue"
-          style="background:#fff; color:var(--blue)"><i data-lucide="external-link"></i>Visit MCCIA Pune</a>
+        <a href="https://mcciapune.com" target="_blank" rel="noopener" class="btn"
+          style="background: #ffffff; color: var(--indigo); border-radius: var(--r-sm); font-weight: 700; padding: 0.8rem 1.8rem;"><i
+            data-lucide="external-link"></i>Visit MCCIA Pune</a>
       </div>
     </div>
   </section>
@@ -1961,6 +2039,49 @@
           shape: 'square',
           hoverTrailAmount: 6
         });
+      }
+
+      // Timeline scroll tracker logic
+      const track = document.querySelector('.tl-track');
+      const progress = document.querySelector('.tl-progress');
+      const items = document.querySelectorAll('.tl-item');
+
+      if (track && progress && items.length >= 2) {
+        const handleScroll = () => {
+          const firstRect = items[0].getBoundingClientRect();
+          const lastRect = items[items.length - 1].getBoundingClientRect();
+
+          const firstDotY = firstRect.top + 23;
+          const lastDotY = lastRect.top + 23;
+
+          const viewportHeight = window.innerHeight;
+          const triggerY = viewportHeight * 0.65;
+
+          if (firstDotY > triggerY) {
+            progress.style.height = '0%';
+            items[0].classList.add('active');
+            items[1].classList.remove('active');
+          } else if (lastDotY < triggerY) {
+            progress.style.height = '100%';
+            items[0].classList.add('active');
+            items[1].classList.add('active');
+          } else {
+            const totalDistance = lastDotY - firstDotY;
+            const currentProgress = ((triggerY - firstDotY) / totalDistance) * 100;
+            progress.style.height = `${currentProgress}%`;
+
+            items[0].classList.add('active');
+            if (currentProgress > 95) {
+              items[1].classList.add('active');
+            } else {
+              items[1].classList.remove('active');
+            }
+          }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('resize', handleScroll);
+        handleScroll();
       }
     });
   </script>
