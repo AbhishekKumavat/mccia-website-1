@@ -274,15 +274,15 @@
       margin: 0;
     }
 
-    .mobile-menu > ul > li {
+    .mobile-menu>ul>li {
       border-bottom: 1px solid rgba(226, 232, 240, 0.6);
     }
 
-    .mobile-menu > ul > li:last-child {
+    .mobile-menu>ul>li:last-child {
       border-bottom: none;
     }
 
-    .mobile-menu > ul > li > a {
+    .mobile-menu>ul>li>a {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -297,15 +297,15 @@
       transition: background 0.2s ease;
     }
 
-    .mobile-menu > ul > li > a:hover {
+    .mobile-menu>ul>li>a:hover {
       background: rgba(0, 63, 138, 0.04);
     }
 
-    .mobile-menu > ul > li > a i {
+    .mobile-menu>ul>li>a i {
       transition: transform 0.3s ease;
     }
 
-    .mobile-menu > ul > li.mob-open > a i {
+    .mobile-menu>ul>li.mob-open>a i {
       transform: rotate(180deg);
     }
 
@@ -315,7 +315,7 @@
       padding: 6px 0;
     }
 
-    .mobile-menu > ul > li.mob-open .mobile-submenu {
+    .mobile-menu>ul>li.mob-open .mobile-submenu {
       display: block;
     }
 
@@ -1697,6 +1697,184 @@
         display: none;
       }
     }
+
+    /* BOOKING SPECIFIC STYLES */
+    .booking-hero {
+      padding-top: 100px;
+      padding-bottom: 30px;
+      background: var(--bg);
+    }
+
+    .carousel-container {
+      max-width: 1200px;
+      position: relative;
+      margin: auto;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .carousel-slide {
+      display: none;
+      height: 450px;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-caption {
+      color: #f2f2f2;
+      font-size: 24px;
+      font-weight: 700;
+      padding: 15px 30px;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: var(--r-sm);
+      backdrop-filter: blur(5px);
+    }
+
+    .prev,
+    .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover,
+    .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .dot {
+      cursor: pointer;
+      height: 12px;
+      width: 12px;
+      margin: 0 4px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+
+    .active-dot,
+    .dot:hover {
+      background-color: var(--indigo);
+    }
+
+    .fade {
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: .4
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .booking-cards-sec {
+      padding: 4rem 1.5rem;
+      background: #f8fafc;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .b-card {
+      background: var(--card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .b-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hover);
+      box-shadow: 0 20px 40px rgba(0, 63, 138, 0.08);
+    }
+
+    .b-card-img {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+    }
+
+    .b-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .b-card:hover .b-card-img img {
+      transform: scale(1.05);
+    }
+
+    .b-card-content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .b-card h3 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .b-card p {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    @media(max-width: 960px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .carousel-slide {
+        height: 300px;
+      }
+    }
   </style>
 </head>
 
@@ -1705,7 +1883,7 @@
   <!-- NAV -->
   <nav>
     <div class="nav-in">
-      <a href="https://www.mcciapune.com/" class="nav-logo">
+      <a href="index.html" class="nav-logo">
         <img src="logo.jpeg" alt="MCCIA Logo">
       </a>
       <ul class="nav-links">
@@ -1798,7 +1976,8 @@
       <li><a href="https://www.mcciapune.com/memberships/membership-landing-page/">Membership</a></li>
       <li><a href="https://www.mcciapune.com/events/events-landing-page/">Events</a></li>
       <li>
-        <a href="#" class="mob-dropdown-toggle">Services <i data-lucide="chevron-down" style="width:14px;height:14px;"></i></a>
+        <a href="#" class="mob-dropdown-toggle">Services <i data-lucide="chevron-down"
+            style="width:14px;height:14px;"></i></a>
         <ul class="mobile-submenu">
           <li><a href="https://www.mcciapune.com/services/advisory-desk/">Advisory</a></li>
           <li><a href="https://www.mcciapune.com/services/hall-booking/">Book a Hall</a></li>
@@ -1813,7 +1992,8 @@
         </ul>
       </li>
       <li>
-        <a href="#" class="mob-dropdown-toggle">Initiatives <i data-lucide="chevron-down" style="width:14px;height:14px;"></i></a>
+        <a href="#" class="mob-dropdown-toggle">Initiatives <i data-lucide="chevron-down"
+            style="width:14px;height:14px;"></i></a>
         <ul class="mobile-submenu">
           <li><a href="https://www.mcciapune.com/initiatives/auto-cluster/">Auto Cluster</a></li>
           <li><a href="https://www.mcciapune.com/initiatives/electronic-cluster/">Electronics Cluster</a></li>
@@ -1833,7 +2013,8 @@
         </ul>
       </li>
       <li>
-        <a href="#" class="mob-dropdown-toggle">Media <i data-lucide="chevron-down" style="width:14px;height:14px;"></i></a>
+        <a href="#" class="mob-dropdown-toggle">Media <i data-lucide="chevron-down"
+            style="width:14px;height:14px;"></i></a>
         <ul class="mobile-submenu">
           <li><a href="https://www.mcciapune.com/publications/mccia-blog/">MCCIA Blog</a></li>
           <li><a href="https://www.mcciapune.com/publications/publication-sampada/">Sampada Magazine</a></li>
@@ -1843,7 +2024,8 @@
         </ul>
       </li>
       <li>
-        <a href="#" class="mob-dropdown-toggle">About Us <i data-lucide="chevron-down" style="width:14px;height:14px;"></i></a>
+        <a href="#" class="mob-dropdown-toggle">About Us <i data-lucide="chevron-down"
+            style="width:14px;height:14px;"></i></a>
         <ul class="mobile-submenu">
           <li><a href="https://www.mcciapune.com/mcciaadmin/about_us/">About MCCIA</a></li>
           <li><a href="https://www.mcciapune.com/mcciaadmin/vision_tab/">Vision and Mission</a></li>
@@ -1889,549 +2071,114 @@
     });
   </script>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="hero-glow-secondary"></div>
-    <div class="shapegrid-container">
-      <canvas id="hero-shapegrid" class="shapegrid-canvas"></canvas>
-    </div>
-    <div class="hero-in">
-      <h1 class="hero-h1">
-        Empowering MSMEs with <span class="cb">Artificial</span> <span class="cg">Intelligence</span>
-      </h1>
-      <p class="hero-sub">Pioneering the adoption of practical artificial intelligence across MSMEs by transforming
-        awareness into implementation and experimentation into execution.</p>
-      <div class="hero-btns">
-        <a href="#champions" class="btn btn-blue"><i data-lucide="users"></i>View MSME Champions</a>
-        <a href="#story" class="btn btn-ghost">Learn Our Story</a>
+
+  <!-- BOOKING CAROUSEL -->
+  <section class="booking-hero">
+    <div class="carousel-container">
+      <div class="carousel-slide fade">
+        <img src="cohort.jpeg" alt="Slide 1">
+        <div class="carousel-caption">Expert 1-on-1 Consultations</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="industry-workshop.jpeg" alt="Slide 2">
+        <div class="carousel-caption">Strategic Workshops for Growth</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="tech-pe-charcha.jpeg" alt="Slide 3">
+        <div class="carousel-caption">Technology Deep Dives</div>
       </div>
 
-      <div class="hero-panel">
-        <div class="hp-grid">
-          <div class="hcs">
-            <div class="hcs-n">1,700+</div>
-            <div class="hcs-l">MSMEs Trained</div>
-          </div>
-          <div class="hcs">
-            <div class="hcs-n">68%+</div>
-            <div class="hcs-l">Micro-Scale Reach</div>
-          </div>
-          <div class="hcs">
-            <div class="hcs-n">37%</div>
-            <div class="hcs-l">Women Leaders</div>
-          </div>
-        </div>
-      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+    <div style="text-align:center; padding-top: 15px;">
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+      <span class="dot" onclick="currentSlide(3)"></span>
     </div>
   </section>
 
-  <!-- STRIP -->
-  <div class="strip">
-    <div class="strip-in">
-      <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="1700">1</span>+</div>
-        <div class="si-l">MSMEs Sensitized</div>
-      </div>
-      <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="1115">1</span>+</div>
-        <div class="si-l">Total Participants</div>
-      </div>
-      <div class="si">
-        <div class="si-n gr"><span class="roll-num" data-target="12">1</span>+</div>
-        <div class="si-l">Districts Covered</div>
-      </div>
-      <div class="si">
-        <div class="si-n"><span class="roll-num" data-target="100">1</span>+</div>
-        <div class="si-l">AI Champions Analyzed</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ABOUT & FOREWORD -->
-  <section id="story">
+  <!-- BOOKING CARDS -->
+  <section class="booking-cards-sec">
     <div class="wrap">
-      <div class="story-grid">
-        <!-- Left side: Text -->
-        <div>
-          <div class="stag"><i data-lucide="book-open"></i>Initiative Journey</div>
-          <h2 class="sh">Inclusive Digital Growth for MSMEs</h2>
-          <p class="copy-p">Launched in <strong>2024</strong> through the regional <strong>MCCIA AI Series</strong>, our
-            initiative set out by listening first. We traveled across 12+ districts in Maharashtra, sitting with 1,000+
-            entrepreneurs and operational teams to understand where AI could solve real business challenges.</p>
-          <p class="copy-p">Recognizing the gap between wanting AI solutions and knowing how to build them, the chamber
-            formalized the <strong>MCCIA Applied AI Studio</strong> in <strong>June 2025</strong>. We teach AI not just
-            as technology, but as a practical methodology for business problem-solving.</p>
-          <p class="copy-p">Today, the Studio stands as a vibrant ecosystem where <strong>600+ MSMEs</strong> are
-            actively building, debugging, and deploying custom AI applications to automate operations and drive
-            sustainable growth.</p>
-        </div>
-
-        <!-- Right side: Timeline -->
-        <div style="margin-top: 1.5rem;">
-          <div class="tl">
-            <div class="tl-track">
-              <div class="tl-progress"></div>
-            </div>
-
-            <div class="tl-item" id="tl-item-1">
-              <div class="tl-dot"></div>
-              <div class="tl-c">
-                <h4>2024 — MCCIA AI Series Launched</h4>
-                <p>Statewide Boot Camps and virtual webinars reaching 1,115 active participants across Maharashtra.</p>
-              </div>
-            </div>
-            <div class="tl-item" id="tl-item-2">
-              <div class="tl-dot"></div>
-              <div class="tl-c">
-                <h4>June 2025 — Dedicated Applied AI Studio</h4>
-                <p>Transitioned from general awareness programs to direct, hands-on implementation and technical
-                  assessments.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="shdr" style="text-align: center; margin-bottom: 3rem;">
+        <h2 class="sh">Choose Your Consultation Path</h2>
       </div>
-
-      <!-- Centered quote down at center -->
-      <div class="story-quote-centered">
-        <div class="quote-card centered-quote">
-          <h3
-            style="font-size:1.1rem; font-style:italic; line-height:1.65; color:var(--navy); font-weight:500; text-align:center">
-            "Technology is not reserved for the technically inclined; it is for every entrepreneur ready to learn,
-            adapt, and take charge."</h3>
-          <p
-            style="margin-top:1.2rem; margin-bottom:0; font-weight:700; color:var(--blue); font-size:0.9rem; text-align:center">
-            — Mr. Sanjay Kirloskar &amp; Mr. Prashant Girbane</p>
-          <p style="font-size:0.72rem; color:var(--ink-4); margin-top:2px; font-weight:500; text-align:center">President
-            &amp; Director General, MCCIA Pune</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- METHODOLOGY SECTION (AI Series) -->
-  <section class="meth-bg" id="methodology">
-    <div class="wrap">
-      <div class="shdr">
-        <div class="stag"><i data-lucide="git-branch"></i>Studio Offerings</div>
-        <h2 class="sh">How We Enable Builders</h2>
-        <p class="slead">Rather than offering abstract training courses or dependency-heavy consulting, the MCCIA
-          Applied AI Studio delivers impact through three structured pillars:</p>
-      </div>
-
-      <div class="meth-grid">
-        <div class="mc">
-          <div class="mc-img-wrap">
-            <img src="cohort.jpeg" alt="Application Building Cohorts">
+      <div class="booking-grid">
+        <div class="b-card">
+          <div class="b-card-img">
+            <img src="cohort.jpeg" alt="1-on-1 Strategy">
           </div>
-          <div class="mc-content">
-            <h3>1. Application Building Cohorts</h3>
-            <p>Structured, hands-on 2-week cohorts where operations teams bring real business bottlenecks and walk away on
-              Day 5 with a custom, working AI application ready to deploy immediately in production.</p>
+          <div class="b-card-content">
+            <h3>1-on-1 Consultation Session</h3>
+            <p>Direct consultation with industry experts to address your specific business bottlenecks and formulate a
+              custom implementation roadmap.</p>
+            <a href="https://tr.ee/cdVGhfx0O9" class="btn btn-blue" style="margin-top: 1rem; width: 100%; justify-content: center;">Book
+              Now</a>
           </div>
         </div>
-
-        <div class="mc">
-          <div class="mc-img-wrap">
-            <img src="industry-workshop.jpeg" alt="Industry-Specific Workshops">
+        <div class="b-card">
+          <div class="b-card-img">
+            <img src="industry-workshop.jpeg" alt="Team Training">
           </div>
-          <div class="mc-content">
-            <h3>2. Industry-Specific Workshops</h3>
-            <p>Deep-dive sector masterclasses focusing on practical domain use cases including AI in Legal Services,
-              Retail Analytics, Food &amp; Beverage operations, Agriculture networks, and Supply Chain automation.</p>
+          <div class="b-card-content">
+            <h3>AI Workshops</h3>
+            <p>Dedicated training and workshops for your operational teams to master new workflows and adopt AI tools
+              seamlessly into their daily tasks.</p>
+            <a href="https://www.mcciapune.com/events/events-landing-page/" class="btn btn-blue" style="margin-top: 1rem; width: 100%; justify-content: center;">Book
+              Now</a>
           </div>
         </div>
-
-        <div class="mc">
-          <div class="mc-img-wrap">
-            <img src="tech-pe-charcha.jpeg" alt="Tech Pe Charcha Circles">
+        <div class="b-card">
+          <div class="b-card-img">
+            <img src="tech-pe-charcha.jpeg" alt="Technical Assessment">
           </div>
-          <div class="mc-content">
-            <h3>3. Tech Pe Charcha Circles</h3>
-            <p>Monthly, practitioner-led peer learning sessions where MSME builders gather to demo custom automations,
-              share integration templates, and troubleshoot deployment challenges together.</p>
+          <div class="b-card-content">
+            <h3>AI Champion Cohort</h3>
+            <p>A comprehensive review of your existing digital infrastructure and processes to identify key areas for
+              automation and optimization.</p>
+            <a href="https://www.mcciapune.com/events/events-landing-page/" class="btn btn-blue" style="margin-top: 1rem; width: 100%; justify-content: center;">Book
+              Now</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- STUDIO IMPACT SECTION (Consultations & Workshops) -->
-  <section id="studio-impact" style="background: #ffffff; border-bottom: 1px solid var(--border)">
-    <div class="wrap">
-      <div class="shdr">
-        <div class="stag"><i data-lucide="activity"></i>On-Ground Impact</div>
-        <h2 class="sh">Studio Consultations & Technical Workshops</h2>
-        <p class="slead">Direct enablement numbers and operational success stories driven by the MCCIA Applied AI Studio
-          team on-site:</p>
-      </div>
+  <!-- CAROUSEL SCRIPT -->
+  <script>
+    let slideIndex = 0;
+    showSlides();
 
-      <div class="studio-grid">
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("carousel-slide");
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active-dot", "");
+      }
+      if (slides[slideIndex - 1]) {
+        slides[slideIndex - 1].style.display = "block";
+        if (dots[slideIndex - 1]) dots[slideIndex - 1].className += " active-dot";
+      }
+      setTimeout(showSlides, 4000); // Change image every 4 seconds
+    }
 
-        <!-- Consultation Data Card -->
-        <div class="studio-card"
-          style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
-          <div
-            style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(0, 86, 179, 0.05) 0%, transparent 70%); pointer-events: none;">
-          </div>
-          <div class="mc-ico b"
-            style="background: rgba(0, 63, 138, 0.06); color: var(--indigo); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-            <i data-lucide="help-circle" style="width: 20px; height: 20px;"></i>
-          </div>
-          <h3
-            style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">
-            1-on-1 Consultations</h3>
+    function plusSlides(n) {
+      slideIndex += n - 1;
+      showSlides();
+    }
 
-          <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-            <div style="display: flex; align-items: center; gap: 1.25rem;">
-              <div
-                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">
-                600+</div>
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique
-                  Companies Benefitted</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Custom operational
-                  assessments and tech deployment paths tailored to individual workflows.</p>
-              </div>
-            </div>
-
-            <div
-              style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
-              <div
-                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--indigo); line-height: 1;">
-                100+</div>
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Building
-                  Custom AI Apps</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Active MSMEs co-developing
-                  custom applications to solve their unique business constraints.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Workshop Data Card -->
-        <div class="studio-card"
-          style="background: var(--bg-radial); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 2.2rem; box-shadow: var(--glow-shadow); transition: all 0.3s ease; position: relative; overflow: hidden;">
-          <div
-            style="position: absolute; top: -20px; right: -20px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%); pointer-events: none;">
-          </div>
-          <div class="mc-ico g"
-            style="background: rgba(16, 185, 129, 0.06); color: var(--emerald); width: 44px; height: 44px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
-            <i data-lucide="users" style="width: 20px; height: 20px;"></i>
-          </div>
-          <h3
-            style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text); margin-bottom: 1.5rem;">
-            Technical Workshops</h3>
-
-          <div style="display: flex; flex-direction: column; gap: 1.8rem;">
-            <div style="display: flex; align-items: center; gap: 1.25rem;">
-              <div
-                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">
-                200+</div>
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Unique
-                  Companies Attended / Benefitted</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Collaborative district-level
-                  workshops and training sessions focused on technical scaling.</p>
-              </div>
-            </div>
-
-            <div
-              style="display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--border); padding-top: 1.5rem;">
-              <div
-                style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 2.5rem; font-weight: 800; color: var(--emerald); line-height: 1;">
-                80%</div>
-              <div>
-                <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 2px;">Workflow
-                  Efficiency Gains</h4>
-                <p style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.4;">Average efficiency
-                  improvement reported by participants using AI tools in their daily tasks.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- METRICS DASHBOARD -->
-  <section id="metrics">
-    <div class="wrap">
-      <div class="shdr">
-        <div class="stag gr"><i data-lucide="bar-chart-3"></i>Ecosystem Impact</div>
-        <h2 class="sh">Key Operational Insights</h2>
-        <p class="slead">Direct feedback from 600+ builders reveals concrete operational performance improvements and
-          strategic capability shifts across Maharashtra's MSME ecosystem:</p>
-      </div>
-
-      <div class="metrics-split">
-        <div class="met-column">
-          <div class="met-card">
-            <div class="met-num">66.7%</div>
-            <div class="met-info">
-              <div class="met-lbl">Productivity Gains</div>
-              <div class="met-desc">Significant increase in overall task completion speed and copywriting quality.</div>
-            </div>
-          </div>
-          <div class="met-card">
-            <div class="met-num gr">54.9%</div>
-            <div class="met-info">
-              <div class="met-lbl">Efficiency Increases</div>
-              <div class="met-desc">Streamlining daily workflows, report preparation, and data organization.</div>
-            </div>
-          </div>
-          <div class="met-card">
-            <div class="met-num">42.2%</div>
-            <div class="met-info">
-              <div class="met-lbl">Response Speedup</div>
-              <div class="met-desc">Accelerated customer email replies, product catalogs, and ad writing.</div>
-            </div>
-          </div>
-          <div class="met-card">
-            <div class="met-num gr">26.5%</div>
-            <div class="met-info">
-              <div class="met-lbl">Outsourcing Savings</div>
-              <div class="met-desc">Bringing content creation and graphic ideation completely in-house.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="per-column" style="display: flex; flex-direction: column; gap: 1.5rem;">
-          <div class="per-card b">
-            <div class="per-h"><i data-lucide="alert-circle"></i>Before: AI Perception</div>
-            <div class="per-pills">
-              <span class="per-pill">Robotic Complexity</span>
-              <span class="per-pill">For Tech Giants Only</span>
-              <span class="per-pill">Expensive Setup</span>
-              <span class="per-pill">Unnecessary Friction</span>
-            </div>
-            <p class="per-desc">Entrepreneurs associated AI with steep learning curves, assuming it demanded deep
-              programming knowledge and corporate IT resources.</p>
-          </div>
-
-          <div class="per-card g">
-            <div class="per-h"><i data-lucide="smile"></i>After: Daily Companion</div>
-            <div class="per-pills">
-              <span class="per-pill">Smarter Assistant</span>
-              <span class="per-pill">Time-Saver</span>
-              <span class="per-pill">Free Ad Copy</span>
-              <span class="per-pill">Creative Spark</span>
-            </div>
-            <p class="per-desc">Participants embraced simple LLM chat assistants, treating them as virtual advisors for
-              writing, technical research, and scheduling.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 100 CHAMPIONS FEATURED SHOWCASE -->
-  <section id="champions" class="champs-bg">
-    <div class="wrap">
-      <div class="shdr">
-        <div class="stag"><i data-lucide="award"></i>Featured Stories</div>
-        <h2 class="sh">MSME AI Champions in Action</h2>
-        <p class="slead">A clean, high-impact selection of real success stories documenting tools adopted and practical
-          time and cost savings:</p>
-      </div>
-
-      <div class="ch-grid">
-        <!-- 1 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Retail &amp; Skincare</span>
-            <span>Ahilyanagar</span>
-          </div>
-          <h3>Ansh Creations</h3>
-          <div class="ch-founder">Founder: Aarti Joshi</div>
-          <p class="ch-quote">"Used DeepSeek to analyze customer reviews, discovering a huge demand for specialized
-            formulations. This shift improved product alignment by 30% and cut branding research from a full day to
-            under 2 hours."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">ChatGPT</span>
-            <span class="ch-tool-p">DeepSeek</span>
-            <span class="ch-tool-p">Meta AI</span>
-          </div>
-        </div>
-
-        <!-- 2 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Bakery &amp; Food</span>
-            <span>Ahilyanagar</span>
-          </div>
-          <h3>Unibakes</h3>
-          <div class="ch-founder">Founder: Aaswari Natu</div>
-          <p class="ch-quote">"Launched targeted social marketing for millet biscuits using ChatGPT, doubling order
-            conversion rates from 20% to 50% while automated billing freed up hours of manual entry."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">ChatGPT</span>
-            <span class="ch-tool-p">Aaryak Invoicing</span>
-          </div>
-        </div>
-
-        <!-- 3 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Handmade Crafts</span>
-            <span>Pune</span>
-          </div>
-          <h3>Sutra-Shilpa</h3>
-          <div class="ch-founder">Founder: Shalmali Bapat</div>
-          <p class="ch-quote">"Brought marketing and visual design completely in-house using ChatGPT and Canva. Saved
-            INR 15,000–20,000 monthly in agency outsourcing costs by creating targeted ad copy in 30 minutes."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">ChatGPT</span>
-            <span class="ch-tool-p">Canva AI</span>
-          </div>
-        </div>
-
-        <!-- 4 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Technical Services</span>
-            <span>Pune</span>
-          </div>
-          <h3>VRF Aircon Pvt Ltd</h3>
-          <div class="ch-founder">Founder: Krushna Jadhav</div>
-          <p class="ch-quote">"Drafts technical client correspondence and professional reports in 15 minutes instead of
-            1 hour. Also uses ChatGPT prompts to run initial electrical load estimations."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">ChatGPT</span>
-            <span class="ch-tool-p">Excel Macros</span>
-          </div>
-        </div>
-
-        <!-- 5 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Legal Services</span>
-            <span>Pune</span>
-          </div>
-          <h3>Adv. Prachi Sonawane</h3>
-          <div class="ch-founder">Founder: Prachi Sonawane</div>
-          <p class="ch-quote">"Leverages MikeLegal to cut trademark conflict research from days to 45 minutes. Feed
-            agreements templates into ChatGPT to generate accurate legal draft frames in minutes."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">ChatGPT</span>
-            <span class="ch-tool-p">MikeLegal</span>
-          </div>
-        </div>
-
-        <!-- 6 -->
-        <div class="ch-card">
-          <div class="ch-top">
-            <span class="ch-sec">Agri-business</span>
-            <span>Jalna</span>
-          </div>
-          <h3>Krushisangam Agro</h3>
-          <div class="ch-founder">Founder: Ajit Khedkar</div>
-          <p class="ch-quote">"Overcame traditional farming skepticism following the boot camp. Now queries
-            WhatsApp-enabled Meta AI for crop diagnostics, agricultural tool pricing, and buyer messages."</p>
-          <div class="ch-tools">
-            <span class="ch-tool-p">Meta AI</span>
-            <span class="ch-tool-p">WhatsApp</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONSOLIDATED ROADBLOCKS & PLAYBOOK -->
-  <section id="takeaways">
-    <div class="wrap">
-      <div class="takeaway-grid">
-        <div>
-          <div class="stag"><i data-lucide="shield-alert"></i>Roadblocks</div>
-          <h2 class="sh">Key Challenges Encountered</h2>
-          <p class="slead" style="margin-bottom:1.5rem">Upskilling traditional small businesses revealed critical
-            non-technical constraints:</p>
-
-          <div class="takeaway-list">
-            <div class="tk-item">
-              <div class="tk-ico"><i data-lucide="arrow-right"></i></div>
-              <div class="tk-c">
-                <h4>Digital Readiness Gaps</h4>
-                <p>Uneven baseline infrastructure (unstable connections or lack of desktop machines) required
-                  significant on-ground personal guidance.</p>
-              </div>
-            </div>
-
-            <div class="tk-item">
-              <div class="tk-ico"><i data-lucide="arrow-right"></i></div>
-              <div class="tk-c">
-                <h4>Time Poverty</h4>
-                <p>MSME owners are fully immersed in daily administrative tasks, making time commitment for technology
-                  learning the biggest hurdle.</p>
-              </div>
-            </div>
-
-            <div class="tk-item">
-              <div class="tk-ico"><i data-lucide="arrow-right"></i></div>
-              <div class="tk-c">
-                <h4>Language Barriers</h4>
-                <p>Technical jargon created initial resistance. Success was achieved by translating prompts into Marathi
-                  and local business analogies.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <div class="stag gr"><i data-lucide="check-square"></i>MSME Playbook</div>
-          <h2 class="sh">Actionable Implementation Rules</h2>
-          <p class="slead" style="margin-bottom:1.5rem">Advice compiled from champions who successfully integrated AI
-            workflows:</p>
-
-          <div class="takeaway-list">
-            <div class="tk-item">
-              <div class="tk-ico g"><i data-lucide="check"></i></div>
-              <div class="tk-c">
-                <h4>Start Small, Act Now</h4>
-                <p>Begin by automating email drafts, content proofing, or spreadsheet cleanup. Small wins build early
-                  user trust.</p>
-              </div>
-            </div>
-
-            <div class="tk-item">
-              <div class="tk-ico g"><i data-lucide="check"></i></div>
-              <div class="tk-c">
-                <h4>Master Prompt Clarity</h4>
-                <p>Better prompts yield better outcomes. Provide context, define roles, and give exact parameters to get
-                  practical results.</p>
-              </div>
-            </div>
-
-            <div class="tk-item">
-              <div class="tk-ico g"><i data-lucide="check"></i></div>
-              <div class="tk-c">
-                <h4>Human Oversight (Loop)</h4>
-                <p>Verify every output before publishing. AI is a highly performant enhancer, not a total decision
-                  replacement.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SIMPLE CTA BANNER -->
-  <section style="padding:4rem 1.5rem">
-    <div class="wrap">
-      <div class="cta-banner">
-        <h2>Transform Your Business Workflow</h2>
-        <p>Connect with the MCCIA Applied AI Studio to explore technical workshops, workflow audits, and customized
-          digital upskilling programs for your organization.</p>
-        <a href="https://mcciapune.com" target="_blank" rel="noopener" class="btn"
-          style="background: #ffffff; color: var(--indigo); border-radius: var(--r-sm); font-weight: 700; padding: 0.8rem 1.8rem;"><i
-            data-lucide="external-link"></i>Visit MCCIA Pune</a>
-      </div>
-    </div>
-  </section>
+    function currentSlide(n) {
+      slideIndex = n - 1;
+      showSlides();
+    }
+  </script>
 
   <!-- FOOTER -->
   <footer>
