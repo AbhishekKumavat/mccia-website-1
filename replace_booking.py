@@ -20,6 +20,26 @@ new_html = """
         <img src="tech-pe-charcha.jpeg" alt="Slide 3">
         <div class="carousel-caption">Technology Deep Dives</div>
       </div>
+      <div class="carousel-slide fade">
+        <img src="photos/image1.JPG" alt="Slide 4">
+        <div class="carousel-caption">Practical Business Adoption</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="photos/image2.JPG" alt="Slide 5">
+        <div class="carousel-caption">Hands-on AI Workshops</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="photos/image3.jpg" alt="Slide 6">
+        <div class="carousel-caption">Interactive Cohort Sessions</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="photos/image4.jpg" alt="Slide 7">
+        <div class="carousel-caption">Workflow Transformation & Automation</div>
+      </div>
+      <div class="carousel-slide fade">
+        <img src="photos/image5.JPG" alt="Slide 8">
+        <div class="carousel-caption">Empowering MSMEs Across Maharashtra</div>
+      </div>
       
       <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
       <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -28,6 +48,11 @@ new_html = """
       <span class="dot" onclick="currentSlide(1)"></span> 
       <span class="dot" onclick="currentSlide(2)"></span> 
       <span class="dot" onclick="currentSlide(3)"></span> 
+      <span class="dot" onclick="currentSlide(4)"></span> 
+      <span class="dot" onclick="currentSlide(5)"></span> 
+      <span class="dot" onclick="currentSlide(6)"></span> 
+      <span class="dot" onclick="currentSlide(7)"></span> 
+      <span class="dot" onclick="currentSlide(8)"></span> 
     </div>
   </section>
 
@@ -75,6 +100,7 @@ new_html = """
   <!-- CAROUSEL SCRIPT -->
   <script>
     let slideIndex = 0;
+    let slideTimeout;
     showSlides();
 
     function showSlides() {
@@ -86,6 +112,7 @@ new_html = """
       }
       slideIndex++;
       if (slideIndex > slides.length) {slideIndex = 1}    
+      if (slideIndex < 1) {slideIndex = slides.length}    
       for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active-dot", "");
       }
@@ -93,15 +120,24 @@ new_html = """
         slides[slideIndex-1].style.display = "block";  
         if(dots[slideIndex-1]) dots[slideIndex-1].className += " active-dot";
       }
-      setTimeout(showSlides, 4000); // Change image every 4 seconds
+      if (slideTimeout) clearTimeout(slideTimeout);
+      slideTimeout = setTimeout(showSlides, 4000); // Change image every 4 seconds
     }
     
     function plusSlides(n) {
-        // Implementation for manual override
+      if (slideTimeout) clearTimeout(slideTimeout);
+      let slides = document.getElementsByClassName("carousel-slide");
+      slideIndex += n - 1;
+      if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+      showSlides();
     }
     
     function currentSlide(n) {
-        // Implementation for manual override
+      if (slideTimeout) clearTimeout(slideTimeout);
+      slideIndex = n - 1;
+      showSlides();
     }
   </script>
 
